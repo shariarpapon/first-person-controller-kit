@@ -2,13 +2,24 @@ using UnityEngine;
 
 namespace FirstPersonControllerKit
 {
-    public class InputManager : PersistentSingletonMonobehaviour<InputManager>
+    public class InputManager : MonoBehaviour
     {
+        public static InputManager Instance { get; private set; }
         private StandardInputActions playerControlInput;
 
-        public override void Awake()
+        public void Awake()
         {
-            base.Awake();
+            if (Instance != null)
+            {
+                Destroy(gameObject);
+                return;
+            }
+            else 
+            {
+                Instance = this;
+                DontDestroyOnLoad(this);
+            }
+            
             playerControlInput = new StandardInputActions();
         }
 

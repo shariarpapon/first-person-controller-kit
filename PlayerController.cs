@@ -66,7 +66,7 @@ namespace FirstPersonControllerKit
 
         private void LateralMovement()
         {
-            Vector2 lateralInput = inputManager.GetPlayerMovement().normalized;
+            Vector2 lateralInput = inputManager.GetWASDInput().normalized;
             float angle = Vector3.SignedAngle(Vector3.forward, playerCamera.transform.forward, Vector3.up);
             Quaternion rotation = Quaternion.Euler(0f, angle, 0f);
             Vector3 motionVector = rotation * new Vector3(lateralInput.x, 0, lateralInput.y);
@@ -75,7 +75,7 @@ namespace FirstPersonControllerKit
 
         private void VerticalMovement()
         {
-            if (inputManager.HasPlayerJumped() && groundedPlayer)
+            if (inputManager.GetSpaceInput() && groundedPlayer)
             {
                 playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
             }

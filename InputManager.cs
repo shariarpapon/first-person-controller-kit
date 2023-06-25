@@ -33,8 +33,8 @@ namespace FirstPersonControllerKit
             playerControlInput.Disable();
         }
 
-        public Vector2 GetPlayerMovement() => playerControlInput.Player.Movement.ReadValue<Vector2>();
-        public Vector2 GetMouseDelta() => playerControlInput.Player.Look.ReadValue<Vector2>();
-        public bool HasPlayerJumped() => playerControlInput.Player.Jump.triggered;
+        public Vector2 GetWASDInput() => playerControlInput.Player.Movement.ReadValue<Vector2>();
+        public Vector2 GetMouseInput() => playerControlInput.Player.Look.ReadValue<Vector2>();
+        public bool GetSpaceInput() => playerControlInput.Player.Jump.triggered;
     }
 }
